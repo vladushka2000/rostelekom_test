@@ -1,21 +1,18 @@
-[project]
+[tool.poetry]
 name = "service-a"
 version = "1.0.0"
 description = "Сервис A"
-authors = [
-    {name = "vladushka2000",email = "nazipovvt@yandex.ru"}
-]
-license = {text = "MIT"}
+authors = ["vladushka2000 <nazipovvt@yandex.ru>"]
+license = "MIT"
 readme = "README.md"
-requires-python = ">=3.11"
-dependencies = [
-    "pydantic (>=2.11.4,<3.0.0)",
-    "pydantic-settings (>=2.9.1,<3.0.0)",
-    "dotenv (>=0.9.9,<0.10.0)",
-    "waitress (>=3.0.2,<4.0.0)",
-    "flask (>=3.1.1,<4.0.0)"
-]
 
+[tool.poetry.dependencies]
+python = "^3.11"
+pydantic = "^2.11.4"
+pydantic-settings = "^2.9.1"
+dotenv = "^0.9.9"
+waitress = "^3.0.2"
+flask = "^3.1.1"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
