@@ -5,11 +5,11 @@ from interfaces import i_repository
 
 # Тестовая in-memory БД
 _EQP_DB = {
-    1: ...,
-    2: ...,
-    3: ...,
-    4: ...,
-    5: ...
+    "aaa001": ...,
+    "aaa002": ...,
+    "aaa003": ...,
+    "aaa004": ...,
+    "aaa005": ...
 }
 
 
@@ -25,7 +25,7 @@ class EqpRepository(i_repository.IRepository):
 
         return super().create(*args, **kwargs)
 
-    def retrieve(self, id_: int) -> int | None:
+    def retrieve(self, id_: str) -> str | None:
         """
         Получить id устройства
         :param id_: серийный номер устройства

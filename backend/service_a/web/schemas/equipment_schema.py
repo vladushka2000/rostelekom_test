@@ -14,10 +14,13 @@ class Parameters(base_schema.BaseWebSchema):
     interfaces: list[int] = Field(description="Интерфейсы")
 
 
-class EquipmentSchema(base_schema.BaseWebSchema):
+class EquipmentSchema(base_schema.BaseWebSchema, base_schema.ConfigMixin):
     """
     Схема данных для запроса на конфигурацию устройства
     """
 
-    timeoutInSeconds: int = Field(description="Максимальное время ожидания ответа на запрос")
+    timeout_in_seconds: int = Field(
+        description="Максимальное время ожидания ответа на запрос",
+        alias="timeoutInSeconds"
+    )
     parameters: Parameters = Field(description="Параметры")

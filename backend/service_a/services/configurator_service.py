@@ -9,7 +9,7 @@ class ConfiguratorService:
     Конфигуратор устройств
     """
 
-    def configure(self, id_: int) -> None:
+    def configure(self, id_: str) -> None:
         """
         Сконфигурировать устройство
         :param id_: id устройства
