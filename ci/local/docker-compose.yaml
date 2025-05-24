@@ -14,11 +14,35 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+  postgres:
+    image: postgres:latest
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
   service_a:
     build:
       context: ../../backend/service_a
       dockerfile: ./Dockerfile
     ports:
       - ${SERVICE_A_PORT}:7777
+  service_b:
+    build:
+      context: ../../backend/service_b
+      dockerfile: ./Dockerfile
+    ports:
+      - ${SERVICE_B_PORT}:7776
+    depends_on:
+      - rabbitmq
+      - postgres
+      - service_a
 volumes:
   rabbitmq-data:
+  pgdata:
